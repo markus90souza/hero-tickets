@@ -1,5 +1,6 @@
 import express, { Application } from 'express'
 import { connect } from './infra/database'
+import { errorMiddleware } from './middlewares/error.middleware'
 
 export class App {
   public app: Application
@@ -26,6 +27,6 @@ export class App {
   }
 
   errorHandler() {
-    // this.app.use('')
+    this.app.use(errorMiddleware)
   }
 }
